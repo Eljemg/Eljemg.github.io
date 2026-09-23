@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JEMX Optimize — Optimización de Windows para gaming</title>
+<meta name="description" content="Optimizaciones de Windows, NVIDIA y red para reducir latencia y mejorar el rendimiento en juegos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#top" class="navbar__logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      JEMX<span class="accent">Optimize</span>
+    </a>
+
+    <nav class="navbar__links" id="navLinks">
+      <a href="#top">Inicio</a>
+      <a href="#optimizaciones">Optimizaciones</a>
+      <a href="#planes">Planes</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <a href="#planes" class="btn btn--primary btn--sm">Empezar</a>
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Windows · NVIDIA · Red</p>
+        <h1>Optimiza Windows.<br>Reduce la latencia.<br><span class="accent">Maximiza tu rendimiento.</span></h1>
+        <p class="hero__subtitle">Optimizaciones cuidadosamente seleccionadas para gaming, FPS, estabilidad y respuesta del sistema — explicadas, no prometidas.</p>
+        <div class="hero__actions">
+          <a href="#planes" class="btn btn--primary">Ver planes</a>
+          <a href="#optimizaciones" class="btn btn--ghost">Explorar optimizaciones</a>
+        </div>
+      </div>
+
+      <div class="hero__hud" id="heroHud">
+        <div class="hud__header">
+          <span class="hud__dot"></span> Lectura del sistema
+          <span class="hud__badge">DEMO</span>
+        </div>
+        <div class="hud__rows" id="hudRows"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPTIMIZACIONES ============ -->
+  <section class="section" id="optimizaciones">
+    <div class="section__head">
+      <h2>Optimizaciones</h2>
+      <p>Explora cada categoría. Nada se aplica automáticamente: tú decides qué usar.</p>
+    </div>
+
+    <div class="tabs" id="optTabs" role="tablist"></div>
+    <div class="tabs__panels" id="optPanels"></div>
+  </section>
+
+  <!-- ============ PLANES ============ -->
+  <section class="section section--alt" id="planes">
+    <div class="section__head">
+      <h2>Planes</h2>
+      <p>Del ajuste básico al control total del sistema.</p>
+    </div>
+    <div class="pricing" id="pricingGrid"></div>
+
+    <div class="compare">
+      <h3>Comparación de planes</h3>
+      <div class="compare__table-wrap">
+        <table class="compare__table" id="compareTable"></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HERRAMIENTAS ============ -->
+  <section class="section" id="herramientas">
+    <div class="section__head">
+      <h2>Herramientas interactivas</h2>
+      <p>Diagnósticos y checklists orientativos. No modifican tu sistema.</p>
+    </div>
+
+    <div class="tools-grid">
+      <div class="panel" id="hwPanel">
+        <h3>Información de tu equipo</h3>
+        <p class="panel__hint">Recibe recomendaciones generales según tu hardware.</p>
+        <form id="hwForm" class="hw-form">
+          <label>GPU
+            <select name="gpu" id="gpuSelect">
+              <option value="nvidia-high">NVIDIA gama alta (RTX 4070+)</option>
+              <option value="nvidia-mid">NVIDIA gama media (RTX 3050–4060)</option>
+              <option value="nvidia-low">NVIDIA gama baja / integrada</option>
+              <option value="amd">AMD Radeon</option>
+              <option value="other">Otra / no estoy seguro</option>
+            </select>
+          </label>
+          <label>CPU
+            <select name="cpu">
+              <option value="high">6+ núcleos recientes</option>
+              <option value="mid">4–6 núcleos</option>
+              <option value="low">2–4 núcleos / gama baja</option>
+            </select>
+          </label>
+          <label>RAM
+            <select name="ram">
+              <option value="8">8 GB</option>
+              <option value="16">16 GB</option>
+              <option value="32">32 GB o más</option>
+            </select>
+          </label>
+          <label>Versión de Windows
+            <select name="windows" id="winSelect">
+              <option value="11">Windows 11</option>
+              <option value="10">Windows 10</option>
+              <option value="other">Otra</option>
+            </select>
+          </label>
+          <label>Monitor
+            <select name="hz">
+              <option value="60">60 Hz</option>
+              <option value="144">144 Hz</option>
+              <option value="240">240 Hz o más</option>
+            </select>
+          </label>
+          <label>Tipo de juego
+            <select name="genre">
+              <option value="competitive">Competitivo / shooter</option>
+              <option value="open-world">Mundo abierto / AAA</option>
+              <option value="casual">Casual / indie</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn--primary btn--full">Generar recomendaciones</button>
+        </form>
+        <div class="hw-result" id="hwResult" hidden></div>
+      </div>
+
+      <div class="panel">
+        <h3>Checklists</h3>
+        <p class="panel__hint">Marca lo que ya tienes configurado.</p>
+        <div class="checklist-tabs" id="checklistTabs"></div>
+        <div id="checklistBody"></div>
+        <div class="score" id="checklistScore"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD ============ -->
+  <section class="section section--alt" id="dashboard">
+    <div class="section__head">
+      <h2>Dashboard de optimización</h2>
+      <p>Vista de ejemplo — datos simulados con fines demostrativos.</p>
+    </div>
+    <div class="dash" id="dashGrid"></div>
+  </section>
+
+  <!-- ============ SEGURIDAD ============ -->
+  <section class="section" id="seguridad">
+    <div class="safety">
+      <div class="safety__head">
+        <h2>Antes de optimizar</h2>
+        <p>Léelo antes de tocar cualquier ajuste avanzado.</p>
+      </div>
+      <ul class="safety__list" id="safetyList"></ul>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="section__head">
+      <h2>Preguntas frecuentes</h2>
+      <p>Respuestas honestas. Sin promesas de FPS específicos.</p>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <div>
+        <div class="footer__title">JEMX Optimize</div>
+        <div class="footer__tag">Optimize smarter. Game faster.</div>
+      </div>
+    </div>
+    <div class="footer__links">
+      <a href="#">Discord</a>
+      <a href="#">GitHub</a>
+      <a href="#">Términos</a>
+      <a href="#">Privacidad</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MODAL ============ -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__backdrop" id="modalBackdrop"></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" id="modalClose" aria-label="Cerrar">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
