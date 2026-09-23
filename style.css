@@ -219,7 +219,13 @@ button{ font-family: inherit; cursor: pointer; }
 /* ==========================================================================
    PRICING
    ========================================================================== */
-.pricing{ display:grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; margin-bottom: 64px; }
+.pricing{ display:grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; margin-bottom: 28px; }
+
+.payment-methods{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin: 0 0 64px; font-size: 12.5px; color: var(--text-dim); }
+.payment-methods__label{ margin-right: 4px; }
+.payment-badge{ background: var(--bg-alt); border: 1px solid var(--panel-border); padding: 6px 13px; border-radius: 999px; }
+
+.plan__discord{ font-size: 12.5px; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line); padding: 9px 12px; border-radius: 8px; margin-bottom: 14px; text-align: center; }
 .plan{
   background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--radius-lg);
   padding: 28px; display:flex; flex-direction: column; transition: border-color .2s, transform .2s var(--ease);

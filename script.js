@@ -101,11 +101,14 @@ const OPT_CATEGORIES = [
   },
 ];
 
+const PAYMENT_METHODS = ["Nequi", "Daviplata", "PSE", "Bancolombia", "Tarjeta de crédito/débito", "PayPal"];
+
 const PLANS = [
   {
     name: "FREE", price: "$0", desc: "Optimización básica",
     features: ["Ajustes básicos de Windows","Game Mode","Configuración básica de energía","Limpieza básica","Ajustes básicos de NVIDIA","Comandos básicos de CMD","Guías básicas de Regedit"],
-    cta: "Empezar gratis"
+    cta: "Empezar gratis",
+    discord: ".jqemg"
   },
   {
     name: "PRO", price: "$5", desc: "Optimización avanzada", featured: true,
@@ -325,13 +328,21 @@ function renderPricing(){
     el.innerHTML = `
       ${plan.featured ? '<span class="plan__tag">Más elegido</span>' : ""}
       <div class="plan__name">${plan.name}</div>
-      <div class="plan__price">${plan.price}<span>/mes</span></div>
+      <div class="plan__price">${plan.price}</div>
       <div class="plan__desc">${plan.desc}</div>
       ${plan.warning ? `<div class="plan__warning">${plan.warning}</div>` : ""}
       <ul class="plan__features">${plan.features.map(f => `<li>${f}</li>`).join("")}</ul>
+      ${plan.discord ? `<div class="plan__discord">Agrégame en Discord: <strong>${plan.discord}</strong> para que te dé acceso.</div>` : ""}
       <button class="btn ${plan.featured ? "btn--primary" : "btn--ghost"} btn--full">${plan.cta}</button>`;
     grid.appendChild(el);
   });
+}
+
+function renderPaymentMethods(){
+  const wrap = document.getElementById("paymentMethods");
+  if (!wrap) return;
+  wrap.innerHTML = `<span class="payment-methods__label">Métodos de pago aceptados</span>` +
+    PAYMENT_METHODS.map(m => `<span class="payment-badge">${m}</span>`).join("");
 }
 
 function renderCompareTable(){
@@ -539,6 +550,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderHud();
   renderTabs();
   renderPricing();
+  renderPaymentMethods();
   renderCompareTable();
   renderSafety();
   renderFaq();
